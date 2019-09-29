@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('includes/bootstrapCSS.ejs') %>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header include-->
+      <%- include('includes/header.ejs') %>
+      <div class="row">
+        <!-- Side nav include-->
+        <%- include('includes/nav.ejs') %>
+        <div class="col">
+          <!-- Main Body-->
+          <h3>Body</h3>
+        </div>
+      </div>
+
+    </div>
+    <%- include('includes/bootstrapJS.ejs') %>
+  </body>
+</html>
