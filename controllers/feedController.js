@@ -1,15 +1,15 @@
 /**
 |--------------------------------------------------
-| Main page feed routes
+| main Feed controllers
 |--------------------------------------------------
 */
-
 const express = require('express');
 const router = express.Router();
-const feedController = require('../controllers/feedController');
 
+exports.mainFeed = router.get('/', function ( req, res ) {
+  res.render('index', { 
+    title: 'Express' ,
+    tacos: []
+  });
 
-/* GET home page. */
-router.get('/', feedController.mainFeed);
-
-module.exports = router;
+});

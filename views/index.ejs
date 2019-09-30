@@ -13,7 +13,27 @@
         <%- include('includes/nav.ejs') %>
         <div class="col">
           <!-- Main Body-->
-          <h3>Body</h3>
+          <h3>New Tacos</h3>
+          <div id="new-feed" >
+            Any new tacos from other users go here
+            <% tacos.forEach( taco => { %>
+              <div class="media">
+                <img src="#" width="100" height="100" alt="taco" />
+                <div class="media-body">
+                  <h5><%= taco.title %></h5>
+                  <%= taco.description %>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+          <h3>My Tacos</h3>
+          <div id="myrecipes">
+            User created tacos go here
+          </div>
+          <h3>Ingredients</h3>
+          <div id="myrecipes">
+            Popular Ingredients go here
+          </div>
         </div>
       </div>
 
