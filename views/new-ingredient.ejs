@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('includes/bootstrapCSS.ejs') %>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header include-->
+      <%- include('includes/header.ejs') %>
+      <div class="row">
+        <!-- Side nav include-->
+        <%- include('includes/nav.ejs') %>
+        <div class="col">
+          <!-- Main Body-->
+          <div class="center">
+            <form action="/create/ingredient" class="form-group">
+                <label id="title">Ingredient Title</label>
+                <input type="text" name="title" id="title" />
+
+                <label for="description" id="description">Descriptin</label>
+                <input type="text" name="description" id="description"/>
+
+                <label for="image" id="image">Image URL</label>
+                <input type="text" name="image" id="image" />
+
+                <input type="hidden" name="userId" value="<%= user.id %>">
+
+                <button type="submit">Create!</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%- include('includes/bootstrapJS.ejs') %>
+  </body>
+</html>
