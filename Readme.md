@@ -8,3 +8,6 @@ Keep track of your favorite taco recipes
 + `/create` create new ingredients and design your tacos
 + `/user` login, sign up, profile page, u kno usr stuf
 
+# Screenshot
+Behold the glory!
+![screenshot](https://raw.githubusercontent.com/dcsim0n/TacoSaco/master/public/images/taco-saco.PNG)
