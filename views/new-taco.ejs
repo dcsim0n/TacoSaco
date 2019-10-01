@@ -14,13 +14,13 @@
         <div class="col">
           <!-- Main Body-->
           <div class="center">
-            <form action="/create/ingredients" method="POST" form-group">
-                <label id="title">Ingredient Title</label>
+            <form action="/create/tacos" method="POST" form-group">
+                <label id="title">Taco Title</label>
                 <input type="text" name="title" id="title" />
 
                 <br />
 
-                <label for="description" id="description">Description</label>
+                <label for="description" id="description">Describe your taco</label>
                 <input type="text" name="description" id="description"/>
 
                 <br />
@@ -29,7 +29,9 @@
                 <input type="text" name="image" id="image" />
                 
                 <br />
-
+                <%  ingredients.forEach( ingredient =>{ %>
+                    <input type="checkbox" name="ingredients" id="" value="<%= ingredient.id %>"> <%= ingredient.title %>
+                <% }) %>
                 <input type="hidden" name="userId" value="<%= user.id %>">
 
                 <button type="submit">Create!</button>
