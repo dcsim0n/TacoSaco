@@ -45,7 +45,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-mongoose.connect(process.env.DB)
+mongoose.connect(process.env.DB, { useNewUrlParser: true })
 .then( result =>{
   console.log("Connected..");
   app.listen(3000);

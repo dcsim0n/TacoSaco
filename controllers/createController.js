@@ -37,7 +37,8 @@ exports.createTaco = ( req, resp, next ) =>{
         title: req.body.title,
         description: req.body.description,
         image: req.body.image,
-        ingredients: [...req.body.ingredients]
+        ingredients: [...req.body.ingredients],
+        userId: req.user.id
     })
     .then( taco =>{
         resp.redirect('/create');

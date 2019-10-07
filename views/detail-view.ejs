@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('includes/bootstrapCSS.ejs') %>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header include-->
+      <%- include('includes/header.ejs') %>
+      <div class="row">
+        <!-- Side nav include-->
+        <%- include('includes/nav.ejs') %>
+        <div class="col">
+          <!-- Main Body-->
+          <h3><%= item.title %> </h3>
+          <p> <%= item.description %> </p>
+          <img src="<%= item.image %>" alt="<%= item.title %>" width="300" height="300" />
+          <% if(children){ %>
+            <div class="float-right">
+                <ul>
+                    <% children.forEach( child => { %>
+                        <li> <%= child.title %> </li>
+                    <% }); %>
+                </ul>
+            </div>
+          <% } %>
+          
+        </div>
+      </div>
+
+    </div>
+    <%- include('includes/bootstrapJS.ejs') %>
+  </body>
+</html>

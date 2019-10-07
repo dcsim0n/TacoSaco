@@ -9,8 +9,14 @@ const tacoSchema = new Schema({
     image: {type: String},
     description: {type: String},
     ingredients: [
-        { type: Schema.Types.ObjectId }
-    ]
+        {
+            ingredientId: { type: Schema.Types.ObjectId, ref: 'Ingredient', required: true }
+        }
+    ],
+    userId:{
+        type: Schema.Types.ObjectId,
+        ref: 'User', required: true
+    }
 })
 
 module.exports = mongoose.model( 'Taco', tacoSchema );
