@@ -9,9 +9,7 @@ const tacoSchema = new Schema({
     image: {type: String},
     description: {type: String},
     ingredients: [
-        {
-            ingredientId: { type: Schema.Types.ObjectId, ref: 'Ingredient', required: true }
-        }
+         { type: Schema.Types.ObjectId, ref: 'Ingredient'}
     ],
     userId:{
         type: Schema.Types.ObjectId,

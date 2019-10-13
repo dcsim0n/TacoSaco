@@ -3,6 +3,7 @@
 */
 const Ingredient = require('../models/ingredient');
 const Taco = require('../models/taco');
+const mongoose = require('mongoose');
 
 exports.createMenu = ( req, resp, next ) =>{
     resp.render('menu', {
@@ -32,16 +33,20 @@ exports.newTaco = ( req, resp, next ) =>{
     })
 }
 exports.createTaco = ( req, resp, next ) =>{
-    console.log("Ingredients", req.body.ingredients)
+    const { ingredients } = req.body
+    console.log("Ingredients", ingredients )
     Taco.create({
         title: req.body.title,
         description: req.body.description,
         image: req.body.image,
-        ingredients: [...req.body.ingredients],
+        ingredients: ingredients.map( id => mongoose.Types.ObjectId( id )),
         userId: req.user.id
     })
     .then( taco =>{
         resp.redirect('/create');
+    })
+    .catch( error =>{
+        console.log('error', error)
     })
 }
 exports.newIngredient = ( req, resp, next ) =>{
