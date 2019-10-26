@@ -16,7 +16,7 @@
           <h3><%= item.title %> </h3>
           <p> <%= item.description %> </p>
           <img src="<%= item.image %>" alt="<%= item.title %>" width="300" height="300" />
-          <% if(children){ %>
+          <% if(children != undefined){ %>
             <div class="float-right">
                 <ul>
                     <% children.forEach( child => { %>
@@ -25,7 +25,7 @@
                 </ul>
             </div>
           <% } %>
-          
+          <a href="<%= editUrl %>">Edit</a>
         </div>
       </div>
 

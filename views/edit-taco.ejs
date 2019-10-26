@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('includes/bootstrapCSS.ejs') %>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header include-->
+      <%- include('includes/header.ejs') %>
+      <div class="row">
+        <!-- Side nav include-->
+        <%- include('includes/nav.ejs') %>
+        <div class="col">
+          <!-- Main Body-->
+          <div class="center">
+            <form action="/create/tacos" method="POST" form-group">
+                <label id="title">Taco Title</label>
+                <input type="text" name="title" id="title"  value="<%= taco.title %>" />
+                <input type="hidden" name="id" value="<%=taco.id %>" />
+                <br />
+
+                <label for="description" id="description">Describe your taco</label>
+                <input type="text" name="description" value="<%= taco.description %>" id="description"/>
+
+                <br />
+
+                <label for="image" id="image">Image URL</label>
+                <input type="text" name="image" id="image" value="<%=taco.image%>"/>
+                
+                <br />
+                <%  ingredients.forEach( ingredient =>{ %>
+                    <input type="checkbox" name="ingredients" id="" value="<%= ingredient.id %>" <%= taco.ingredients.includes(ingredient)? "checked" : "" %> > <%= ingredient.title %>
+                <% }) %>
+                <input type="hidden" name="userId" value="<%= user.id %>">
+
+                <button type="submit">Save!</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%- include('includes/bootstrapJS.ejs') %>
+  </body>
+</html>

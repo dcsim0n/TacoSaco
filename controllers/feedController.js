@@ -25,19 +25,16 @@ Ingredient.find()
 }
 
 exports.tacoDetails = function( req, res ) { // Controler for /tacos/:id
-  let viewTaco;
   Taco.findById( req.params.id ).populate('ingredients')
   .then( taco => {
     console.log("Loaded ingredients:", taco)
     res.render( 'detail-view', {
       title: "Taco Details",
       item: taco,
-      children: taco.ingredients
+      children: taco.ingredients,
+      editUrl: `/create/tacos/edit/${taco.id}`
     });
   })
-  .then( ingredients => {
-    
-  });
  // Fetch details for taco
 }
 
@@ -46,7 +43,10 @@ exports.ingredientDetails =  function( req, res ){ // Controller for /ingredient
   .then( ingredient => {
     res.render('detail-view', {
       title: "Ingredient Details",
-      item: ingredient
+      item: ingredient,
+      children:[],
+      editUrl: `/create/ingredients/edit/${ingredient.id}`
+
     })
   })
 }

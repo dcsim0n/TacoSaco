@@ -2,9 +2,10 @@ var createError = require('http-errors');
 var express = require('express');
 var mongoose = require('mongoose');
 var path = require('path');
+var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose');
+
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
@@ -23,6 +24,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride( function ( req, res) {
+  if ( req.body && typeof req.body === 'object' && '_method' in req.body){
+    var method = req.body._method
+    delete req.body._method
+    return method
+  }
+}))
 
 app.use('/', userController.loadDefaultUser);
 app.use('/users', usersRouter );

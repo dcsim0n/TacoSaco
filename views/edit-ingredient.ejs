@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('includes/bootstrapCSS.ejs') %>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header include-->
+      <%- include('includes/header.ejs') %>
+      <div class="row">
+        <!-- Side nav include-->
+        <%- include('includes/nav.ejs') %>
+        <div class="col">
+          <!-- Main Body-->
+          <div class="center">
+            <form action="/create/ingredients" method="POST" form-group">
+              <input type="hidden" name="_method" value="PATCH" />
+              <input type="hidden" name="id" value="<%=ingredient.id %>" />
+                <label id="title">Ingredient Title</label>
+                <input type="text" name="title" id="title" value="<%= ingredient.title %>" />
+
+                <br />
+
+                <label for="description" id="description">Description</label>
+                <input type="text" name="description" id="description" value="<%= ingredient.description %>" />
+
+                <br />
+
+                <label for="image" id="image">Image URL</label>
+                <input type="text" name="image" id="image" value="<%= ingredient.image %>" />
+                
+                <br />
+
+                <input type="hidden" name="userId" value="<%= user.id %>">
+
+                <button type="submit">Save!</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%- include('includes/bootstrapJS.ejs') %>
+  </body>
+</html>
