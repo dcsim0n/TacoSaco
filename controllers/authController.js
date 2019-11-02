@@ -26,6 +26,8 @@ exports.authenticate = ( req, res, next ) =>{
 
 exports.logout = ( req, res, next ) => {
   console.log("Clearing user id");
-  req.session.user = undefined;
-  res.redirect('/');
+  req.session.destroy( ( err ) =>{
+    console.log('err:', err)
+    res.redirect('/');
+  }); // blow it up!
 }
