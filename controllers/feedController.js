@@ -19,6 +19,7 @@ Ingredient.find()
     res.render('index', { 
       title: 'Welcome to Taco Saco' ,
       tacos,
+      user: req.session.user,
       ingredients: allIngredients
     });
   })
