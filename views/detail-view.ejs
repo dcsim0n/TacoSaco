@@ -27,6 +27,10 @@
           <% } %>
           <% if(user){ %>
             <a href="<%= editUrl %>">Edit</a>
+            <form method="POST" action="<%= deleteUrl %>" class="form-group">
+              <input type="hidden" name="_method" value="DELETE" />
+              <button type="submit">Delete</button>
+            </form>
           <% } %>
         </div>
       </div>
