@@ -60,14 +60,18 @@ exports.editIngredient = ( req, resp, next ) =>{
     })
 }
 exports.newTaco = ( req, resp, next ) =>{
-    Ingredient.find()
-    .then( ingredients =>{
-        resp.render('new-taco', {
-            title: "Create new taco",
-            user: req.session.user,
-            ingredients
+    if(req.session.user){
+        Ingredient.find()
+        .then( ingredients =>{
+            resp.render('new-taco', {
+                title: "Create new taco",
+                user: req.session.user,
+                ingredients
+            });
         });
-    })
+    }else{
+        resp.redirect('/login');
+    }
 }
 exports.editTaco = ( req, resp, next ) =>{
     let allIngredients
