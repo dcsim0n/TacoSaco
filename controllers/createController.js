@@ -13,7 +13,7 @@ exports.createMenu = ( req, resp, next ) =>{
     })
 }
 exports.newIngredient = ( req, resp, next ) =>{
-    if(req.session.user){
+    if(req.user){
         resp.render('new-ingredient',{
             title: "Create new Ingredient",
             user: req.user
@@ -60,7 +60,7 @@ exports.editIngredient = ( req, resp, next ) =>{
     })
 }
 exports.newTaco = ( req, resp, next ) =>{
-    if(req.session.user){
+    if(req.user){
         Ingredient.find()
         .then( ingredients =>{
             resp.render('new-taco', {

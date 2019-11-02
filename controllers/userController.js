@@ -13,9 +13,6 @@ exports.loadDefaultUser = (req, res, next) =>{
             if(!user){
                 throw new Error("Can't find user");
             }
-            return user
-        })
-        .then( user =>{
             console.log("Found user: ", user)
             req.user = user;
             next();

@@ -19,7 +19,7 @@ Ingredient.find()
     res.render('index', { 
       title: 'Welcome to Taco Saco' ,
       tacos,
-      user: req.session.user,
+      user: req.user,
       ingredients: allIngredients
     });
   })
@@ -34,7 +34,7 @@ exports.tacoDetails = function( req, res ) { // Controler for /tacos/:id
       item: taco,
       children: taco.ingredients,
       editUrl: `/create/tacos/edit/${taco.id}`,
-      user: req.session.user
+      user: req.user
     });
   })
  // Fetch details for taco
@@ -48,7 +48,7 @@ exports.ingredientDetails =  function( req, res ){ // Controller for /ingredient
       item: ingredient,
       children:[],
       editUrl: `/create/ingredients/edit/${ingredient.id}`,
-      user: req.session.user
+      user: req.user
     })
   })
 }

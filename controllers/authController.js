@@ -10,7 +10,7 @@ const User = require('../models/user');
 exports.loginForm = ( req, res, next ) => {
   res.render( 'login', {
     title: "Log in please",
-    user: req.session.user
+    user: req.user
   })
 }
 
