@@ -13,10 +13,14 @@ exports.createMenu = ( req, resp, next ) =>{
     })
 }
 exports.newIngredient = ( req, resp, next ) =>{
-    resp.render('new-ingredient',{
-        title: "Create new Ingredient",
-        user: req.session.user
-    });
+    if(req.session.user){
+        resp.render('new-ingredient',{
+            title: "Create new Ingredient",
+            user: req.session.user
+        });
+    }else{
+        resp.redirect('/login');
+    }
 }
 exports.createIngredient = ( req, resp, next ) =>{
     Ingredient.create({

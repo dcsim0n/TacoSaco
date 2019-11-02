@@ -25,7 +25,9 @@
                 </ul>
             </div>
           <% } %>
-          <a href="<%= editUrl %>">Edit</a>
+          <% if(user){ %>
+            <a href="<%= editUrl %>">Edit</a>
+          <% } %>
         </div>
       </div>
 

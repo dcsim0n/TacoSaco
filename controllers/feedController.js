@@ -33,7 +33,8 @@ exports.tacoDetails = function( req, res ) { // Controler for /tacos/:id
       title: "Taco Details",
       item: taco,
       children: taco.ingredients,
-      editUrl: `/create/tacos/edit/${taco.id}`
+      editUrl: `/create/tacos/edit/${taco.id}`,
+      user: req.session.user
     });
   })
  // Fetch details for taco
@@ -46,8 +47,8 @@ exports.ingredientDetails =  function( req, res ){ // Controller for /ingredient
       title: "Ingredient Details",
       item: ingredient,
       children:[],
-      editUrl: `/create/ingredients/edit/${ingredient.id}`
-
+      editUrl: `/create/ingredients/edit/${ingredient.id}`,
+      user: req.session.user
     })
   })
 }
