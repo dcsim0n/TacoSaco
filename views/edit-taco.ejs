@@ -15,9 +15,10 @@
           <!-- Main Body-->
           <div class="center">
             <form action="/create/tacos" method="POST" form-group">
+              <input type="hidden" name="id" value="<%=taco.id %>" />
+              <input type="hidden" name="_method" value="PATCH">
                 <label id="title">Taco Title</label>
                 <input type="text" name="title" id="title"  value="<%= taco.title %>" />
-                <input type="hidden" name="id" value="<%=taco.id %>" />
                 <br />
 
                 <label for="description" id="description">Describe your taco</label>

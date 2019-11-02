@@ -9,14 +9,14 @@ const mongoose = require('mongoose');
 exports.createMenu = ( req, resp, next ) =>{
     resp.render('menu', {
         title: "Your Menue",
-        user: req.session.user
+        user: req.user
     })
 }
 exports.newIngredient = ( req, resp, next ) =>{
     if(req.session.user){
         resp.render('new-ingredient',{
             title: "Create new Ingredient",
-            user: req.session.user
+            user: req.user
         });
     }else{
         resp.redirect('/login');
@@ -27,7 +27,7 @@ exports.createIngredient = ( req, resp, next ) =>{
         title: req.body.title,
         image: req.body.image,
         description: req.body.description,
-        userId: req.session.user.id
+        userId: req.user.id
     })
     .then( ingredient =>{
         resp.redirect(`/ingredients/${ingredient.id}`);
@@ -44,7 +44,7 @@ exports.updateIngredient = ( req, resp, next ) =>{
     .then( ingredient =>{
         resp.render('edit-ingredient',{
             title: "Edit ingredient",
-            user: req.session.user,
+            user: req.user,
             ingredient: ingredient,
        })
     })
@@ -55,7 +55,7 @@ exports.editIngredient = ( req, resp, next ) =>{
         resp.render('edit-ingredient', {
             title: "Edit Ingredient",
             ingredient: ingredient,
-            user: req.session.user,
+            user: req.user,
         })
     })
 }
@@ -65,7 +65,7 @@ exports.newTaco = ( req, resp, next ) =>{
         .then( ingredients =>{
             resp.render('new-taco', {
                 title: "Create new taco",
-                user: req.session.user,
+                user: req.user,
                 ingredients
             });
         });
@@ -84,7 +84,7 @@ exports.editTaco = ( req, resp, next ) =>{
         console.log('taco', taco)
         resp.render('edit-taco', {
             title: "Edit Taco",
-            user: req.session.user,
+            user: req.user,
             taco: taco,
             ingredients: allIngredients
         });
@@ -99,12 +99,7 @@ exports.updateTaco = ( req, resp, next ) =>{
         return taco.save()
     })
     .then( taco =>{
-        resp.render('edit-taco',{
-            title: "Edit Taco",
-            user: req.session.user,
-            taco: taco,
-            ingredients: allIngredients
-       })
+        resp.redirect(`/tacos/${taco.id}`)
     })
 }
 exports.createTaco = ( req, resp, next ) =>{
@@ -115,7 +110,7 @@ exports.createTaco = ( req, resp, next ) =>{
         description: req.body.description,
         image: req.body.image,
         ingredients: ingredients.map( id => mongoose.Types.ObjectId( id )),
-        userId: req.session.user.id
+        userId: req.user.id
     })
     .then( taco =>{
         resp.redirect('/create');

@@ -44,7 +44,7 @@ app.use(methodOverride( function ( req, res) {
   }
 }))
 
-//app.use('/', userController.loadDefaultUser);
+app.use('/', userController.loadDefaultUser);
 app.use('/users', usersRouter );
 app.use('/create', createRouter );
 app.use('/', loginRouter );
