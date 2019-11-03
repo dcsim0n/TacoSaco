@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include('includes/bootstrapCSS.ejs') %>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header include-->
+      <%- include('includes/header.ejs') %>
+      <div class="row">
+        <!-- Side nav include-->
+        <%- include('includes/nav.ejs') %>
+        <div class="col">
+          <!-- Main Body-->
+          <div class="card">
+            <form action="/signup" method="POST" class="form-group">
+              <label for="userName">User Name</label>
+              <input type="text" name="name" id="" class="form-control" />
+              <br />
+              <label for="password">Password:</label>
+              <input type="password" name="password" id=" " class="form-control" />
+              <br />
+              <label for="passwordConfirm">Password:</label>
+              <input type="password" name="passwordConfirm" id=" " class="form-control" />
+              <br />
+              <button type="submit">Sign Up!</button>
+            </form>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%- include('includes/bootstrapJS.ejs') %>
+  </body>
+</html>
