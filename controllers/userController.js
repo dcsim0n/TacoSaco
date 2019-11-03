@@ -6,6 +6,8 @@ const User = require("../models/user");
 const assert = require("assert");
 const bcrypt = require("bcrypt");
 
+const SALT = 12; //Salt value for BCRYPT
+
 exports.loadDefaultUser = (req, res, next) => {
   const { user } = req.session;
   if (user) {
@@ -34,7 +36,7 @@ exports.createUser = (req, res, next) => {
     return res.redirect("/signup");
   }
   bcrypt
-    .hash(password, 12)
+    .hash(password, SALT)
     .then(passHash => {
       return User.create({
         name,
