@@ -17,6 +17,9 @@ exports.loginForm = ( req, res, next ) => {
 exports.authenticate = ( req, res, next ) =>{
   User.findOne({name: req.body.userName })
   .then( user => {
+    if(!user){
+      return res.redirect('/login');
+    }
     req.session.user = user;
     req.session.save(( err ) => { //wait for session to be created before redirect
       console.log('setting session cookie..')
