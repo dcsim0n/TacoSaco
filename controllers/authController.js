@@ -5,34 +5,33 @@
 |--------------------------------------------------
 */
 
-const User = require('../models/user');
+const User = require("../models/user");
 
-exports.loginForm = ( req, res, next ) => {
-  res.render( 'login', {
+exports.loginForm = (req, res, next) => {
+  res.render("login", {
     title: "Log in please",
     user: req.user
-  })
-}
+  });
+};
 
-exports.authenticate = ( req, res, next ) =>{
-  User.findOne({name: req.body.userName })
-  .then( user => {
-    if(!user){
-      return res.redirect('/login');
+exports.authenticate = (req, res, next) => {
+  User.findOne({ name: req.body.userName }).then(user => {
+    if (!user) {
+      return res.redirect("/login");
     }
     req.session.user = user;
-    req.session.save(( err ) => { //wait for session to be created before redirect
-      console.log('setting session cookie..')
-      res.redirect('/')
-    })
+    req.session.save(err => {
+      //wait for session to be created before redirect
+      console.log("setting session cookie..");
+      res.redirect("/");
+    });
+  });
+};
 
-  })
-}
-
-exports.logout = ( req, res, next ) => {
+exports.logout = (req, res, next) => {
   console.log("Clearing user id");
-  req.session.destroy( ( err ) =>{
-    console.log('err:', err)
-    res.redirect('/');
+  req.session.destroy(err => {
+    console.log("err:", err);
+    res.redirect("/");
   }); // blow it up!
-}
+};
